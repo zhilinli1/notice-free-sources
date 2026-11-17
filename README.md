@@ -60,9 +60,11 @@ plugin: disable it and they disappear.
 
 - A Python 3.9+ interpreter is found automatically from the DSH bundled runtime or
   `PATH`; set `pythonPath` in the plugin configuration to pin one.
-- PyMuPDF is vendored under `vendor/python`, so no network access or install step
-  is needed. To use a system PyMuPDF instead, point `pythonPath` at an interpreter
-  that already has it.
+- PyMuPDF must be importable by that interpreter. Distributions come in two build
+  flavours: one vendors PyMuPDF under `vendor/python` so nothing needs installing
+  and no network access is used; the other ships no binary and requires
+  `python -m pip install pymupdf` (or `pythonPath` pointing at an interpreter that
+  already has it).
 - Scanned PDFs have no text layer and need OCR first; pages without text are
   reported as warnings.
 - DRM-protected EPUBs (`META-INF/encryption.xml`) and encrypted PDFs are rejected
@@ -90,13 +92,46 @@ plugin: disable it and they disappear.
 | `index.js` | Host plugin: JSON-Schema tool definition, skill provider, prompt section |
 | `lib/sanitize.py` | document worker: notice detection, PDF redaction, EPUB/HTML rewriting, Markdown extraction |
 | `skills/notice-free-sources.md` | the model-facing skill body |
-| `vendor/python` | vendored PyMuPDF wheel contents |
-| `_dev` | fixture generator and sample documents used to test the worker |
+| `vendor/python` | vendored PyMuPDF wheel contents (omitted from the no-binary build) |
+| `_dev` | fixture generator and sample documents used to test the worker (not packaged) |
+| `release` | build script and manifests for the two publishable variants (not packaged) |
+
+## Publishing
+
+```sh
+# from the package directory; PNPM_SCRIPT is any pnpm.mjs (DSH ships one under its runtime)
+PNPM_SCRIPT="/path/to/pnpm.mjs" node release/build-release.mjs
+```
+
+Both variants pack from this one source, stage only the entries in `files`,
+rewrite `cordis.patch.yml` to the package name, and write the matching `LICENSE`:
+
+| Build | Tarball | Contains | Licence |
+|---|---|---|---|
+| `agpl` | `release/dist/agpl/dsh-notice-free-sources-1.0.0-agpl.tgz` (18.8 MB) | vendored PyMuPDF | `AGPL-3.0-only` |
+| `mit` | `release/dist/mit/dsh-notice-free-sources-1.0.0-mit.tgz` (20 KB) | no binary | `MIT` |
+
+Publish **one**, not both: they share the package name and version. The package is
+not `private`, so `npm publish <tarball>` works as-is. If the name is taken, change
+`name` in `package.json` and rebuild — the bundle patch is regenerated from that
+name, so the row and the package cannot drift apart.
+
+Installing this directory links it for development; installing a tarball copies it
+the way a registry does. To go back to the link after installing a release,
+run **Plugins** → remove, then add this directory again.
 
 ## Licence note
 
-`vendor/python` contains PyMuPDF, which Artifex licenses under **AGPL-3.0** (or a
-commercial licence). It is vendored here so the worker runs offline; review those
-terms before redistributing this bundle. See `vendor/python/pymupdf-*.dist-info/`
-for the upstream licence text. The plugin's own code has no third-party
-dependencies.
+The plugin's own code has no third-party dependencies at runtime; everything it
+imports is a Node.js built-in, and the document worker uses the Python standard
+library plus PyMuPDF.
+
+**Builds that vendor `vendor/python`** redistribute PyMuPDF, which Artifex licenses
+under **AGPL-3.0** or a commercial licence. `package.json` therefore declares
+`AGPL-3.0-only`, `LICENSE` carries the AGPL notice, and the upstream terms are in
+`vendor/python/pymupdf-2.1.dist-info/COPYING`. Review those obligations before
+redistributing that build.
+
+**Builds without `vendor/python`** contain no AGPL code and are licensed MIT; they
+require the user to install PyMuPDF themselves under whatever terms they accept.
+

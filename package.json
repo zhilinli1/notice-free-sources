@@ -1,0 +1,40 @@
+{
+  "name": "dsh-notice-free-sources",
+  "version": "1.0.0",
+  "description": "Extracts a citation-ready working copy of PDF/EPUB sources with rights-reservation boilerplate removed.",
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "keywords": [
+    "dsh",
+    "dsh-bundle",
+    "deepseek-harness",
+    "pdf",
+    "epub",
+    "markdown",
+    "citation",
+    "research",
+    "copyright"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "lib",
+    "skills",
+    "locale/*.json",
+    "docs",
+    "icon.svg",
+    "vendor",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

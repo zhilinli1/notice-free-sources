@@ -1,0 +1,12 @@
+# Build output
+release/dist/
+
+# Installed dependencies
+node_modules/
+
+# Local noise
+*.log
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
