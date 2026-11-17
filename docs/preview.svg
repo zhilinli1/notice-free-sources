@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="300" viewBox="0 0 640 300" fill="none">
+  <defs>
+    <linearGradient id="nfsPage" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F7FAFC"/>
+      <stop offset="1" stop-color="#E6EDF4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- source document with a notice band -->
+  <g>
+    <rect x="52" y="58" width="128" height="184" rx="9" fill="url(#nfsPage)" stroke="#5B7186" stroke-width="2.5"/>
+    <g fill="#9CAFBF">
+      <rect x="70" y="80" width="92" height="8" rx="4"/>
+      <rect x="70" y="100" width="92" height="8" rx="4"/>
+      <rect x="70" y="120" width="66" height="8" rx="4"/>
+      <rect x="70" y="140" width="92" height="8" rx="4"/>
+    </g>
+    <rect x="64" y="170" width="104" height="44" rx="6" fill="#C25B5B" fill-opacity="0.22"/>
+    <g fill="#A85E5E">
+      <rect x="72" y="180" width="88" height="7" rx="3.5"/>
+      <rect x="72" y="194" width="70" height="7" rx="3.5"/>
+    </g>
+    <rect x="64" y="170" width="104" height="44" rx="6" stroke="#C25B5B" stroke-width="2" stroke-dasharray="7 6" stroke-opacity="0.8"/>
+  </g>
+
+  <!-- arrow -->
+  <g stroke="#7C8FA2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M204 150h44"/>
+    <path d="M238 138l14 12-14 12"/>
+  </g>
+
+  <!-- outputs -->
+  <g>
+    <rect x="286" y="58" width="132" height="184" rx="9" fill="url(#nfsPage)" stroke="#2E9E7E" stroke-width="2.5"/>
+    <g fill="#2E9E7E" fill-opacity="0.45">
+      <rect x="304" y="80" width="96" height="8" rx="4"/>
+      <rect x="304" y="100" width="96" height="8" rx="4"/>
+      <rect x="304" y="120" width="70" height="8" rx="4"/>
+      <rect x="304" y="140" width="96" height="8" rx="4"/>
+    </g>
+    <g stroke="#2E9E7E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M372 186l10 10 20-22"/>
+    </g>
+  </g>
+
+  <g>
+    <rect x="452" y="58" width="140" height="184" rx="9" fill="#F7FAFC" stroke="#5B7186" stroke-width="2.5"/>
+    <g fill="#9CAFBF">
+      <rect x="470" y="80" width="26" height="8" rx="4" fill="#2E9E7E" fill-opacity="0.55"/>
+      <rect x="504" y="80" width="70" height="8" rx="4"/>
+      <rect x="470" y="96" width="104" height="8" rx="4"/>
+      <rect x="470" y="112" width="86" height="8" rx="4"/>
+      <rect x="470" y="128" width="104" height="8" rx="4"/>
+      <rect x="470" y="144" width="58" height="8" rx="4"/>
+    </g>
+    <rect x="470" y="176" width="98" height="42" rx="6" fill="#5B7186" fill-opacity="0.10"/>
+    <g fill="#5B7186" fill-opacity="0.55">
+      <rect x="480" y="186" width="72" height="6" rx="3"/>
+      <rect x="480" y="199" width="52" height="6" rx="3"/>
+    </g>
+  </g>
+
+  <!-- removed band marker under the source -->
+  <g stroke="#C25B5B" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.85">
+    <circle cx="116" cy="258" r="12"/>
+    <path d="M110 258h12"/>
+  </g>
+  <g stroke="#2E9E7E" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.9">
+    <circle cx="352" cy="258" r="12"/>
+    <path d="M347 258l4 4 7-8"/>
+  </g>
+  <g stroke="#5B7186" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.9">
+    <circle cx="522" cy="258" r="12"/>
+    <path d="M517 258h10M522 253v10"/>
+  </g>
+</svg>

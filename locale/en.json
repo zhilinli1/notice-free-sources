@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Notice-free sources",
+    "description": "Turns an uploaded PDF, EPUB, HTML, or text document into a citation-ready working copy. The sanitize_document tool returns a Markdown reading copy plus, by default, a copy of the original format with rights-reservation boilerplate removed — copyright lines, \"all rights reserved\", reproduction bans, personal-use and DRM wording, and the metadata fields that repeat them — together with a manifest holding the source hash, per-page removal counts, and the citation fields (title, authors, publisher, year, DOI, ISBN). Use it before summarizing, quoting, or citing a document the user supplied. The source file is never modified; permissive licences and notice phrases inside ordinary prose are kept unless asked otherwise; scanned PDFs need OCR first, and DRM-protected EPUBs or encrypted PDFs are rejected rather than half-processed. The plugin runs a bundled Python worker on this machine, makes no network requests, and reads only the documents you point it at. Turning it off removes the tool, its skill, and its prompt guidance; documents already produced stay on disk.",
+    "detail": "docs/DETAIL.md"
+  }
+}
